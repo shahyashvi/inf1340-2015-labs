@@ -2,11 +2,6 @@
 
 """ Graded Lab #2 for Inf1340, Fall 2015 """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-__copyright__ = "2015 Susan Sim"
-__license__ = "MIT License"
-
 
 """
 Instructions: Add a function to to get input from the user and use that
@@ -17,29 +12,9 @@ entered. A legal value is any integer.
 
 """
 
+
 def name_that_shape():
-    """
-    For a given number of sides in a regular polygon, returns the shape name
-
-    Inputs | Expected Outputs
-    -------------------------
-      < 3  | Error
-      3    | triangle
-      4    | quadrilateral
-      5    | pentagon
-      6    | hexagon
-      7    | heptagon
-      8    | octagon
-      9    | nonagon
-      10   | decagon
-      > 10 | Error
-
-    Errors: ValueError when input is a string or float
-
-    """
-
-    sides = int(raw_input("Number of sides:"))
-
+    sides = get_user_input()
     if sides == 3:
         print("triangle")
     elif sides == 4:
@@ -59,4 +34,15 @@ def name_that_shape():
     else:
         print("Error")
 
-# name_that_shape()
+
+def get_user_input():
+    value = ""
+    input_is_an_integer = False
+    while input_is_an_integer == False:
+        value = raw_input("Number of sides:")
+        if value.isdigit() == True or value[0] == "-" and value[1:].isdigit() == True:
+            value = int(value)
+            input_is_an_integer = True
+    return value
+name_that_shape()
+
