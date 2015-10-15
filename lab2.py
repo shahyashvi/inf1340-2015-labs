@@ -37,11 +37,12 @@ def name_that_shape():
 
 def get_user_input():
     value = ""
-    input_is_an_integer = True
-    while input_is_an_integer:
-        value = int(value)
-    if input_is_an_integer == False:
+    input_is_an_integer = False
+    while input_is_an_integer == False:
         value = raw_input("Number of sides:")
+        if value.isdigit() == True or value[0] == "-" and value[1:].isdigit() == True:
+            value = int(value)
+            input_is_an_integer = True
     return value
 name_that_shape()
 
