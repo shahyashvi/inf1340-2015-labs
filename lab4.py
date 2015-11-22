@@ -15,14 +15,34 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
-# Rewrite this code to use global constants, local variables and functions
-# Output the text to a file instead of printing it
+TAX_PROVINCIAL = 0.05
+TAX_FEDERAL = 0.025
+TAX_TOTAL = 0.075
+PURCHASE_TOTAL = 1.075
+
+#
+# def provincial_tax(purchase):
+#     provincial_tax = (purchase*0.05)
+#     return provincial_tax()
+#
+#
+# def federal_tax(purchase):
+#     federal_tax = (purchase*0.025)
+#     return federal_tax()
+#
+#
+# def total(purchase):
+#     result = purchase + provincial_tax(purchase) + federal_tax(purchase)
+#     return result
 
 
 def bill_of_sale(purchase):
+    file_name = "sale.txt"
+    with open(file_name, 'w') as output_file:
+        output_file.write("Amount of purchase: {0:.2f}\n".format(purchase))
+        output_file.write("Provincial tax: {0:.2f}\n".format(purchase * TAX_PROVINCIAL))
+        output_file.write("Federal tax: {0:.2f}\n".format(purchase * TAX_FEDERAL))
+        output_file.write("Total tax: {0:.2f}\n".format(purchase * TAX_TOTAL))
+        output_file.write("Total sale: {0:.2f}\n".format(purchase * PURCHASE_TOTAL))
 
-    print ("Amount of purchase: {0:.2f}".format(purchase))
-    print ("Provincial tax: {0:.2f}".format(purchase * .05))
-    print ("Federal tax: {0:.2f}".format(purchase * .025))
-    print ("Total tax: {0:.2f}".format(purchase * .075))
-    print ("Total sale: {0:.2f}".format(purchase * 1.075))
+bill_of_sale(10)
